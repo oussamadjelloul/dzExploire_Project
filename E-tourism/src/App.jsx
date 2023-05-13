@@ -1,12 +1,20 @@
-import { useState } from "react";
-
-import "./App.css";
+import {Route, Routes} from "react-router-dom"
+import LandingPage from "./pages/LandingPage";
+import Search from "./pages/Search";
+import PlaceDetail from "./pages/PlaceDetail";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
-    <>
-      <h1 className="text-3xl font-bold underline ">Hello world!</h1>
-    </>
+  <>
+    <Routes>
+      <Route path="/" element={<LandingPage/>}/>
+      <Route path="/search" element={<Search/>}/>
+      <Route path="/place/:id" element={<PlaceDetail/>}/>
+      <Route path="*" element={<NotFound/>} />
+    </Routes>
+  </>
+
   );
 }
 
