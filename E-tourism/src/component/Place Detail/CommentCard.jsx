@@ -15,8 +15,8 @@ const CommentCard = () => {
                 </div>
             </div>
         </div>
-        <div className='p-3 pl-4 flex-1 h-fit overflow-auto sm:border-l-2'>
-            <h4 className='text-[16px] w-3/4 sm:mx-0 mx-auto text-left '>Hi. I’m thinking I may have signed up for the <br/> wrong type of blog. I’ve just created a wordpress.com personal blog site (ancestry). I’m just starting the site but am getting notifications that to use ANY plug-ins I need to upgrade to a business account (yikes not inexpensive!). Should I have signed up for WordPress.org??</h4>
+        <div className='p-3 pl-4 flex-1 h-fit  sm:border-l-2'>
+            <h4 className='sm:text-[16px] text-[13px] w-3/4  sm:mx-0 mx-auto text-left '>Hi. I’m thinking I may have signed up for the <br/> wrong type of blog. I’ve just created a wordpress.com personal blog site (ancestry). I’m just starting the site but am getting notifications that to use ANY plug-ins I need to upgrade to a business account (yikes not inexpensive!). Should I have signed up for WordPress.org??</h4>
         </div>
     </div> );
 }

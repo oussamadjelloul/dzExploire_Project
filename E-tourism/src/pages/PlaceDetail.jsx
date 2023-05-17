@@ -5,7 +5,6 @@ import Description from '../component/Place Detail/Description'
 import Detail from '../component/Place Detail/Detail';
 import Map from '../component/Place Detail/Map';
 import Events from '../component/Place Detail/Events';
-import CommentCard from '../component/Place Detail/CommentCard';
 import Comment from '../component/Place Detail/Comment';
 
 
@@ -23,9 +22,6 @@ const PlaceDetail = () => {
             <Map />
             <Events />
             <Comment />
-            <div className='h-[750px] '>
-                 
-            </div>
 
         </div>
     </div> );

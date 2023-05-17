@@ -7,7 +7,7 @@ import { Icon } from 'leaflet';
 const Map = () => {
     const customIcon = new Icon({
         iconUrl :marker , 
-        iconSize : [40,40]
+        iconSize : [100,100]
     })
     return (  
     
