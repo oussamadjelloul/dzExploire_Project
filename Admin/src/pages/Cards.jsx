@@ -5,6 +5,7 @@ import Filter from "../assets/filter-search.png";
 import { BiSearch } from "react-icons/bi";
 // import { AiOutlineSearch } from "react-icons/ai";
 import { FaBars } from "react-icons/fa";
+import PaginatedItems from "../component/Pagination/Pagination";
 // import Charts from "../component/Charts/Charts";
 // import Timing from "../assets/Icon.svg";
 // import Message from "../assets/comment 1.svg";
@@ -75,7 +76,11 @@ export default function Home() {
           </div>
           <div
             className="overflow-auto border-gray-200 w-full rounded-lg mt-5"
-            style={{ boxShadow: "0px 0px 3px #d6d2d2", borderRadius: "3px" }}
+            style={{
+              boxShadow: "0px 0px 3px #d6d2d2",
+              borderRadius: "3px",
+              minWidth: "400px",
+            }}
           >
             <table
               className="table-auto border  w-full text-center pb-10"
@@ -101,16 +106,16 @@ export default function Home() {
                   //       index % 2 === 0 ? "rgb(245, 245, 245,0.7)" : "white",
                   //   }}
                 >
-                  <td className="pt-5 pb-5 text-base">Mkam El chahid </td>
-                  <td className="pt-5 pb-5 text-base">Alger</td>
-                  <td className="pt-5 pb-5 text-base">
+                  <td className="pt-3 pb-3 text-base">Mkam El chahid </td>
+                  <td className="pt-3 pb-3 text-base">Alger</td>
+                  <td className="pt-3 pb-3 text-base">
                     Chemin Omar kechkar, El Madania
                   </td>
-                  <td className="pt-5 pb-5 text-base flex gap-3 ">
-                    <button className=" text-xs text-white bg-blue-500 p-1 rounded-md">
+                  <td className="pt- pb-3 text-base flex gap-3 justify-center items-center ">
+                    <button className=" text-xs text-white bg-blue-500 p-1 rounded-md mt-2">
                       modify
                     </button>
-                    <button className=" text-xs text-white bg-red-500 p-1 rounded-md">
+                    <button className=" mt-2 text-xs text-white bg-red-500 p-1 rounded-md">
                       Delete
                     </button>
                   </td>
@@ -118,28 +123,191 @@ export default function Home() {
                 <tr
                   //   key={index}
                   className=""
-                  style={{
-                    background: "rgb(245, 245, 245,0.7)",
-                  }}
+                  //   style={{
+                  //     background:
+                  //       index % 2 === 0 ? "rgb(245, 245, 245,0.7)" : "white",
+                  //   }}
                 >
-                  <td className="pt-5 pb-5 text-base">Mkam El chahid </td>
-                  <td className="pt-5 pb-5 text-base">Alger</td>
-                  <td className="pt-5 pb-5 text-base">
+                  <td className="pt-3 pb-3 text-base">Mkam El chahid </td>
+                  <td className="pt-3 pb-3 text-base">Alger</td>
+                  <td className="pt-3 pb-3 text-base">
                     Chemin Omar kechkar, El Madania
                   </td>
-                  <td className="pt-5 pb-5 text-base flex gap-3 ">
-                    <button className=" text-xs text-white bg-blue-500 p-1 rounded-md">
+                  <td className="pt- pb-3 text-base flex gap-3 justify-center items-center ">
+                    <button className=" text-xs text-white bg-blue-500 p-1 rounded-md mt-2">
                       modify
                     </button>
-                    <button className=" text-xs text-white bg-red-500 p-1 rounded-md">
+                    <button className=" mt-2 text-xs text-white bg-red-500 p-1 rounded-md">
                       Delete
                     </button>
                   </td>
                 </tr>
+                <tr
+                  //   key={index}
+                  className=""
+                  //   style={{
+                  //     background:
+                  //       index % 2 === 0 ? "rgb(245, 245, 245,0.7)" : "white",
+                  //   }}
+                >
+                  <td className="pt-3 pb-3 text-base">Mkam El chahid </td>
+                  <td className="pt-3 pb-3 text-base">Alger</td>
+                  <td className="pt-3 pb-3 text-base">
+                    Chemin Omar kechkar, El Madania
+                  </td>
+                  <td className="pt- pb-3 text-base flex gap-3 justify-center items-center ">
+                    <button className=" text-xs text-white bg-blue-500 p-1 rounded-md mt-2">
+                      modify
+                    </button>
+                    <button className=" mt-2 text-xs text-white bg-red-500 p-1 rounded-md">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  //   key={index}
+                  className=""
+                  //   style={{
+                  //     background:
+                  //       index % 2 === 0 ? "rgb(245, 245, 245,0.7)" : "white",
+                  //   }}
+                >
+                  <td className="pt-3 pb-3 text-base">Mkam El chahid </td>
+                  <td className="pt-3 pb-3 text-base">Alger</td>
+                  <td className="pt-3 pb-3 text-base">
+                    Chemin Omar kechkar, El Madania
+                  </td>
+                  <td className="pt- pb-3 text-base flex gap-3 justify-center items-center ">
+                    <button className=" text-xs text-white bg-blue-500 p-1 rounded-md mt-2">
+                      modify
+                    </button>
+                    <button className=" mt-2 text-xs text-white bg-red-500 p-1 rounded-md">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  //   key={index}
+                  className=""
+                  //   style={{
+                  //     background:
+                  //       index % 2 === 0 ? "rgb(245, 245, 245,0.7)" : "white",
+                  //   }}
+                >
+                  <td className="pt-3 pb-3 text-base">Mkam El chahid </td>
+                  <td className="pt-3 pb-3 text-base">Alger</td>
+                  <td className="pt-3 pb-3 text-base">
+                    Chemin Omar kechkar, El Madania
+                  </td>
+                  <td className="pt- pb-3 text-base flex gap-3 justify-center items-center ">
+                    <button className=" text-xs text-white bg-blue-500 p-1 rounded-md mt-2">
+                      modify
+                    </button>
+                    <button className=" mt-2 text-xs text-white bg-red-500 p-1 rounded-md">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  //   key={index}
+                  className=""
+                  //   style={{
+                  //     background:
+                  //       index % 2 === 0 ? "rgb(245, 245, 245,0.7)" : "white",
+                  //   }}
+                >
+                  <td className="pt-3 pb-3 text-base">Mkam El chahid </td>
+                  <td className="pt-3 pb-3 text-base">Alger</td>
+                  <td className="pt-3 pb-3 text-base">
+                    Chemin Omar kechkar, El Madania
+                  </td>
+                  <td className="pt- pb-3 text-base flex gap-3 justify-center items-center ">
+                    <button className=" text-xs text-white bg-blue-500 p-1 rounded-md mt-2">
+                      modify
+                    </button>
+                    <button className=" mt-2 text-xs text-white bg-red-500 p-1 rounded-md">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  //   key={index}
+                  className=""
+                  //   style={{
+                  //     background:
+                  //       index % 2 === 0 ? "rgb(245, 245, 245,0.7)" : "white",
+                  //   }}
+                >
+                  <td className="pt-3 pb-3 text-base">Mkam El chahid </td>
+                  <td className="pt-3 pb-3 text-base">Alger</td>
+                  <td className="pt-3 pb-3 text-base">
+                    Chemin Omar kechkar, El Madania
+                  </td>
+                  <td className="pt- pb-3 text-base flex gap-3 justify-center items-center ">
+                    <button className=" text-xs text-white bg-blue-500 p-1 rounded-md mt-2">
+                      modify
+                    </button>
+                    <button className=" mt-2 text-xs text-white bg-red-500 p-1 rounded-md">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  //   key={index}
+                  className=""
+                  //   style={{
+                  //     background:
+                  //       index % 2 === 0 ? "rgb(245, 245, 245,0.7)" : "white",
+                  //   }}
+                >
+                  <td className="pt-3 pb-3 text-base">Mkam El chahid </td>
+                  <td className="pt-3 pb-3 text-base">Alger</td>
+                  <td className="pt-3 pb-3 text-base">
+                    Chemin Omar kechkar, El Madania
+                  </td>
+                  <td className="pt- pb-3 text-base flex gap-3 justify-center items-center ">
+                    <button className=" text-xs text-white bg-blue-500 p-1 rounded-md mt-2">
+                      modify
+                    </button>
+                    <button className=" mt-2 text-xs text-white bg-red-500 p-1 rounded-md">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  //   key={index}
+                  className=""
+                  //   style={{
+                  //     background:
+                  //       index % 2 === 0 ? "rgb(245, 245, 245,0.7)" : "white",
+                  //   }}
+                >
+                  <td className="pt-3 pb-3 text-base">Mkam El chahid </td>
+                  <td className="pt-3 pb-3 text-base">Alger</td>
+                  <td className="pt-3 pb-3 text-base">
+                    Chemin Omar kechkar, El Madania
+                  </td>
+                  <td className="pt- pb-3 text-base flex gap-3 justify-center items-center ">
+                    <button className=" text-xs text-white bg-blue-500 p-1 rounded-md mt-2">
+                      modify
+                    </button>
+                    <button className=" mt-2 text-xs text-white bg-red-500 p-1 rounded-md">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+
                 {/* );
                   })} */}
               </tbody>
             </table>
+          </div>
+          <div className="w-full sm:w-[50%] h-10 mt-5">
+            <PaginatedItems
+              currentItems={1}
+              handlePageClick={() => {}}
+              pageCount={20}
+            />
           </div>
         </div>
       </div>
