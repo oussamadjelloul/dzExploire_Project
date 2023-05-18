@@ -4,7 +4,7 @@ const ForgotPassword = () => {
     <div id="login" className="h-screen w-full flex justify-center items-center">
         <div className="flex-col justify-center items-center">
             <div className="relative  shadow-md bg-white rounded-lg  ">
-            <div className="p-4   w-[500px]   ">
+            <div className="p-4   px-10   ">
                     <h3 className="text-[32px] font-extrabold text-center">Forgot Password</h3>
                     <p className="text-[16px] text-[#262626] opacity-75 mt-3">Enter your email and we will Send you a reset link</p>
                     <div className="mt-6 flex-col ">
