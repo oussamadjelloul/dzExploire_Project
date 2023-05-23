@@ -1,4 +1,19 @@
-.pagination {
+.pagination >li >a{
+    border: 1px solid #ddd;
+    padding: 0.4em;
+    border-radius: 30%;
+}
+.pagination >.previous >a{
+    border: 0px solid white;
+}
+.pagination > .selected{
+    padding: 0.2em;
     background-color: blue;
     border-radius: 30%;
+}
+.pagination > .selected>a{
+    border: 0px solid blue;
+}
+.pagination >.next >a{
+    border: 0px solid white;
 }

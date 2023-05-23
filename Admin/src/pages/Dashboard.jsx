@@ -3,6 +3,7 @@ import SideBar from "../component/Dashboard/SideBar";
 import { useLocation } from "react-router-dom";
 // import { AiOutlineSearch } from "react-icons/ai";
 import { FaBars } from "react-icons/fa";
+import { AiOutlineDown } from "react-icons/ai";
 import Charts from "../component/Charts/Charts";
 import Timing from "../assets/Icon.svg";
 import Message from "../assets/comment 1.svg";
@@ -32,34 +33,65 @@ export default function Home() {
               <FaBars size="25px" />
             </button>
           </div>
-          <div className="w-4/12 h-full flex justify-center items-center gap-[5%] ">
-            <img src="" alt="admin" />
+          <div className="w-6/12 lg:w-4/12 h-full flex justify-center items-center gap-[5%]">
+            <img
+              src="https://picsum.photos/200/300/"
+              alt="admin"
+              className=" w-12 h-12"
+              style={{ borderRadius: "50%" }}
+            />
             <div className=" flex flex-col">
-              <p>OUSSAMA DJELLOUL</p>
-              <p>admin</p>
+              <p className=" text-base">OUSSAMA DJELLOUL</p>
+              <p className=" text-gray-300">admin</p>
             </div>
           </div>
         </div>
-        <div className="pt-20 font-font relative">
+        <div className="pt-24 font-font relative">
           <div className="lg:w-8/12 w-full p-3  flex justify-between">
             <p className=" text-blu text-2xl font-semibold">Dashboard</p>
             <div
-              className="w-4/12 flex rounded-lg h-14 justify-center items-center gap-[10%]"
-              style={{ boxShadow: "0px 0.5px 3px #bdb9b9" }}
+              className="w-[35%] md:w-[43%] flex rounded-lg h-14 justify-center items-center gap-[10%] p-1"
+              style={{ boxShadow: "0px 0.5px 5px #e6e1e1" }}
             >
-              <div className=" h-10 w-10 rounded-xl bg-blue-100 flex justify-center">
+              <div className=" h-12 w-10 rounded-xl bg-blue-100 flex justify-center">
                 <img src={Timing} />
               </div>
-              <div>
-                <p>Filter Periode</p>
-                <label id="date">adfasdfa</label>
-                {/* <input htmlFor="date" type="date" className=" "/> */}
+              <div className="w-[50%] md:w-[75%] flex flex-col">
+                {/* <p className=" hidden  lg:flex ">Filter Periode</p> */}
+
+                {/* <div className="md:flex lg:flex-row flex-col text-xs text-gray-400 lg:gap-[2px] h-10"> */}
+                <div className="flex w-full h-full gap-[10%]">
+                  <p className=" text-blu font-bold">to </p>
+                  <input
+                    type="date"
+                    id="date1"
+                    className="lg:w-[50%] w-[100%]"
+                  />
+                </div>
+                <div className="flex w-full h-full gap-[10%]">
+                  <p className=" text-blu font-bold">from </p>
+                  <input
+                    type="date"
+                    id="date1"
+                    className="lg:w-[50%] w-[100%]"
+                  />
+                </div>
+                {/* </div> */}
               </div>
+              {/* <button
+                className="w-5"
+                onClick={() => {
+                  document.getElementById("date1").focus();
+                  
+                }}
+              >
+                <AiOutlineDown size="20px" className="text-gray-300" />
+              </button> */}
             </div>
           </div>
-          <div className=" w-full h-full flex flex-col sm:flex-row mt-2 ">
+          <div className=" w-full h-full flex flex-col lg:flex-row mt-2 ">
             {/* text cards  */}
-            <div className="lg:w-8/12 w-full flex flex-col justify-center items-center ">
+            <div className="lg:w-8/12 w-full flex flex-col justify-center items-center order-2 lg:order-1 ">
               {/* cards  */}
               <div className="w-full max-h-max flex flex-wrap gap-[6%]">
                 {/* cards 1  */}
@@ -128,19 +160,19 @@ export default function Home() {
               </div>
             </div>
             {/* views  */}
-            <div className="lg:w-4/12 w-full flex flex-col justify-start gap-[1%]">
+            <div className="lg:w-4/12 w-full order-1 lg:order-2 pb-10 lg:pb-0 ">
               <div
-                className="w-[90%] m-auto bg-gray-200 rounded-md text-center p-2"
-                style={{ boxShadow: "0px 3px 2px #c9c5c5" }}
+                className="w-[90%] m-auto bg-gray-100 rounded-md text-center p-2"
+                style={{ boxShadow: "0px 3px 2px #edebeb" }}
               >
                 <p className="text-xl text-gray-700">Best-views events</p>
                 <div className="mt-3 w-[90%] m-auto max-h-max">
-                  <div className="flex p-3 justify-between text-base">
+                  <div className="flex p-2 justify-between text-base">
                     <p>Flotsam</p>
                     <p className=" text-sm text-gray-400">40+views</p>
                     <p className=" text-sm text-gray-400">05 July 2022</p>
                   </div>
-                  <div className="flex p-3 justify-between text-base">
+                  <div className="flex p-2 justify-between text-base">
                     <p>Flotsam</p>
                     <p className=" text-sm text-gray-400">40+views</p>
                     <p className=" text-sm text-gray-400">05 July 2022</p>
@@ -151,17 +183,17 @@ export default function Home() {
                 </div>
               </div>
               <div
-                className="w-[90%] m-auto bg-gray-200 rounded-md text-center p-2"
-                style={{ boxShadow: "0px 3px 2px #c9c5c5" }}
+                className="w-[90%] m-auto bg-gray-100 rounded-md text-center p-2 mt-10"
+                style={{ boxShadow: "0px 3px 2px #edebeb" }}
               >
                 <p className="text-xl text-gray-700">Best-views cards</p>
                 <div className="mt-3 w-[90%] m-auto max-h-max">
-                  <div className="flex p-3 justify-between text-base">
+                  <div className="flex p-2 justify-between text-base">
                     <p>Flotsam</p>
                     <p className=" text-sm text-gray-400">40+views</p>
                     <p className=" text-sm text-gray-400">05 July 2022</p>
                   </div>
-                  <div className="flex p-3 justify-between text-base">
+                  <div className="flex p-2 justify-between text-base">
                     <p>Flotsam</p>
                     <p className=" text-sm text-gray-400">40+views</p>
                     <p className=" text-sm text-gray-400">05 July 2022</p>

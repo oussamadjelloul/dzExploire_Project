@@ -31,7 +31,7 @@ export default function SideBar({ open, setOpen }) {
               setOpen();
             }}
           >
-            <AiOutlineClose size="25px" className="text-white" />
+            <AiOutlineClose size="25px" className="text-blu" />
           </button>
         </div>
         <div className="w-full m-auto h-28 flex flex-col justify-between text-center lg:mt-5 ">
@@ -39,7 +39,7 @@ export default function SideBar({ open, setOpen }) {
           <p className=" font-logo text-blu font-bold text-3xl">Roadie</p>
           <button className=" bg-blue bg-[#183BB7] text-white p-2 rounded-md  text-lg">
             {" "}
-            + Post New Card
+            <span className="text-2xl font-semibold">+</span> Post New Card
           </button>
         </div>
 
@@ -62,7 +62,7 @@ export default function SideBar({ open, setOpen }) {
           <div className="group7 group">
             <Link to="/cards" className="flex gap-3 w-40 text-left">
               <p>
-              <img
+                <img
                   src={Cards}
                   //   color={location.pathname === "/" ? "white" : "gray"}
                   className=" w-6 h-6 mt-1 group-hover:text-blu "
@@ -76,7 +76,7 @@ export default function SideBar({ open, setOpen }) {
           <div className="group7 group">
             <Link to="/events" className="flex gap-3 w-40 text-left">
               <p>
-              <img
+                <img
                   src={Calendery}
                   //   color={location.pathname === "/" ? "white" : "gray"}
                   className=" w-6 h-6 mt-1 group-hover:text-blu "
@@ -100,10 +100,11 @@ export default function SideBar({ open, setOpen }) {
               navigate("/login");
             });
           }}
+          className="flex gap-2 items-center"
         >
           <RiLogoutCircleRLine size="30px" className="text-red-400" />
+          <p className="text-red-400">logout</p>
         </button>
-        <p className="text-red-400">logout</p>
       </div>
     </div>
   );

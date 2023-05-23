@@ -6,6 +6,7 @@ import { BiSearch } from "react-icons/bi";
 // import { AiOutlineSearch } from "react-icons/ai";
 import { FaBars } from "react-icons/fa";
 import PaginatedItems from "../component/Pagination/Pagination";
+import "../assets/css/Pagination.css";
 // import Charts from "../component/Charts/Charts";
 // import Timing from "../assets/Icon.svg";
 // import Message from "../assets/comment 1.svg";
@@ -75,16 +76,15 @@ export default function Home() {
             </button>
           </div>
           <div
-            className="overflow-auto border-gray-200 w-full rounded-lg mt-5"
+            className="border-gray-200 w-full rounded-lg mt-5 overflow-y-auto"
             style={{
               boxShadow: "0px 0px 3px #d6d2d2",
               borderRadius: "3px",
-              minWidth: "400px",
             }}
           >
             <table
-              className="table-auto border  w-full text-center pb-10"
-              style={{ borderRadius: "16px" }}
+              className="table-auto border  w-full text-center pb-10 "
+              style={{ borderRadius: "16px", minWidth: "700px" }}
             >
               <thead className="border-b-[1px] border-b-gray-200 text-gray-400 ">
                 <tr className="text-gray-700 bg-gray-200">
@@ -302,11 +302,11 @@ export default function Home() {
               </tbody>
             </table>
           </div>
-          <div className="w-full sm:w-[50%] h-10 mt-5">
+          <div className="w-[88%] m-auto sm:ml-0 sm:mr-0 md:w-[50%] h-10 mt-5">
             <PaginatedItems
               currentItems={1}
               handlePageClick={() => {}}
-              pageCount={20}
+              pageCount={10}
             />
           </div>
         </div>
