@@ -7,9 +7,11 @@ const EditCard1 = () => {
   return (
     <div>
       <div className="ContactUs">
+        <div class="sideBar"></div>
         <div className="contact form">
           <h2>Edit Card</h2>
           <form>
+            <span>Fields marqued * are required</span>
             <div className="formBox">
               <div className="row20">
                 <div className="inputBox">
@@ -148,7 +150,7 @@ const EditCard1 = () => {
                         if (event.target.files.length > 0) {
                           //   Array.from(event.target.files).forEach((e) => {
 
-                          var test = URL.createObjectURL(e);
+                          var test = URL.createObjectURL(event);
 
                           setImages([test, ...images]);
                         }
@@ -167,11 +169,6 @@ const EditCard1 = () => {
                           key={index}
                           style={{ backgroundImage: `url(${e})` }}
                         >
-                          {/* <img
-                            src={e}
-                            alt="image"
-                            className=" bg-cover w-ful h-full"
-                          /> */}
                           <i
                             className=" fas fa-trash-alt trash-icon "
                             onClick={() => {
@@ -181,10 +178,9 @@ const EditCard1 = () => {
                           ></i>
                         </div>
                       );
-                    })}
-                  {/* <!--
-            <div src="https://www.urtrips.com/wp-content/uploads/2022/11/Martyrs-Memorial-Algiers-3.jpg"><i className="fas fa-trash-alt trash-icon"></i></div>
-            --> */}
+                    }
+                    )
+                  }
                 </div>
               </div>
 
