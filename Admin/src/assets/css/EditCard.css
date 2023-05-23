@@ -9,19 +9,27 @@
 }
 
 body {
-  padding: 40px;
+  padding: 10px;
   min-width: 400px;
 }
 
 .ContactUs {
   position: relative;
   width: 100%;
-  padding: 40px 100px;
+  display: flex;
+  flex-direction: row;  
 }
+
+.sideBar{
+  background: yellow;
+  width: 25%;
+}
+
 .contact {
   padding: 40px;
-  background: #fff;
+  width: 100%;
 }
+
 .contact h2 {
   color: #0e3959;
   font-weight: 600;
@@ -31,11 +39,14 @@ body {
 /* form */
 .form form {
   margin-top: 1em;
+  padding-top: 10px;
+
 }
 
 .formBox {
   position: relative;
   width: 100%;
+  margin-top: 5px;
 }
 .fromBox .row20 {
   display: flex;
@@ -225,9 +236,6 @@ body {
 }
 
 .row60 .gridBox .checkBox {
-  /*display: flex;
-  /*justify-content: center;*/
-  align-item: center;
   white-space: normal;
 }
 
@@ -348,5 +356,11 @@ body {
 
   .next .inputBox {
     align-items: center;
+  }
+}
+
+@media screen and (max-width: 1024px){
+  .sideBar{
+    width: 0;
   }
 }
