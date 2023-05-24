@@ -20,25 +20,25 @@ export default function SideBar({ open, setOpen }) {
     <div
       className={
         open
-          ? "w-3/5 h-screen fixed z-50 overflow-auto flex flex-col bg-[#F2F2F2] transition transform translate-x-0  "
+          ? "w-3/5 h-full fixed z-50 overflow-auto flex flex-col bg-[#F2F2F2] transition  left-0 top-0  transform translate-x-0  "
           : "md:w-1/5 h-screen fixed z-50 overflow-auto lg:flex flex-col bg-[#F2F2F2] hidden transition"
       }
     >
-      <div className="flex flex-col w-2/3 m-auto mt-4 gap-10">
+      <div className="flex flex-col w-2/3 m-auto mt-4 gap-10 ">
         <div className="w-full h-4 flex justify-end lg:hidden ">
           <button
             onClick={() => {
               setOpen();
             }}
           >
-            <AiOutlineClose size="25px" className="text-white" />
+            <AiOutlineClose size="25px" className="text-blu" />
           </button>
         </div>
         <div className="w-full m-auto h-28 flex flex-col justify-between text-center lg:mt-5 ">
           {/* <img src={logo} alt="logo" /> */}
           <p className=" font-logo text-blu font-bold text-3xl">Roadie</p>
           <button className=" bg-blue bg-[#183BB7] text-white p-2 rounded-md  text-lg">
-            {" "}
+            {""}
             + Post New Card
           </button>
         </div>

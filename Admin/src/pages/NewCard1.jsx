@@ -1,5 +1,6 @@
 import React from "react";
 import "../assets/css/EditCard.css";
+import SideBar from "../component/Dashboard/SideBar";
 
 const NewCard1 = () => {
   const [images, setImages] = React.useState([]);
@@ -7,7 +8,9 @@ const NewCard1 = () => {
   return (
     <div>
       <div className="ContactUs">
-        <div className="sideBar"></div>
+        <div className="sideBar">
+          <SideBar />
+        </div>
         <div className="contact form">
           <h2>New Card</h2>
           <form>
@@ -163,7 +166,7 @@ const NewCard1 = () => {
                           style={{ backgroundImage: `url(${e})` }}
                         >
                           <i
-                            className="fas fa-trash-alt trash-icon"
+                            className="fas fa-trash-alt trash-icon bg-red-600"
                             onClick={() => {
                               images.splice(index, 1);
                               setImages([...images]);

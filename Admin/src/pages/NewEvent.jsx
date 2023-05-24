@@ -1,5 +1,8 @@
 const NewEvent = () => {
-    return ( <></> );
+    return ( 
+    <div>
+        
+    </div> );
 }
  
 export default NewEvent;

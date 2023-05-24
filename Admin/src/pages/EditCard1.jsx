@@ -1,13 +1,22 @@
 import React from "react";
 import "../assets/css/EditCard.css";
+import SideBar from "../component/Dashboard/SideBar";
+import Nav from "../component/Dashboard/Nav";
 
 const EditCard1 = () => {
   const [images, setImages] = React.useState([]);
+  const [open, setOpen] = React.useState(false);
 
   return (
     <div>
-      <div className="ContactUs">
-        <div className="sideBar"></div>
+      <Nav open={open} setOpen={setOpen} />
+      <div className="ContactUs pt-20">
+        <div className="sideBar">
+          <SideBar open={open}
+          setOpen={() => {
+          setOpen(!open);
+        }} />
+        </div>
         <div className="contact form">
           <h2>Edit Card</h2>
           <form>
