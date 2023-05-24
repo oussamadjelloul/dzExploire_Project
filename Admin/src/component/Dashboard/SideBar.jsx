@@ -37,14 +37,11 @@ export default function SideBar({ open, setOpen }) {
         <div className="w-full m-auto h-28 flex flex-col justify-between text-center lg:mt-5 ">
           {/* <img src={logo} alt="logo" /> */}
           <p className=" font-logo text-blu font-bold text-3xl">Roadie</p>
+          <Link to="/new/card">
           <button className=" bg-blue bg-[#183BB7] text-white p-2 rounded-md  text-lg">
-
-            {" "}
             <span className="text-2xl font-semibold">+</span> Post New Card
-            {""}
-            + Post New Card
-
           </button>
+          </Link>
         </div>
 
         <div className="w-full m-auto flex flex-col items-center gap-4 ">

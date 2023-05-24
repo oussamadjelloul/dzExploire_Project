@@ -1,19 +1,18 @@
 import React from "react";
 import SideBar from "../component/Dashboard/SideBar";
-import { useLocation } from "react-router-dom";
+import { Link} from "react-router-dom";
 import Filter from "../assets/filter-search.png";
 import { BiSearch } from "react-icons/bi";
 // import { AiOutlineSearch } from "react-icons/ai";
-import { FaBars } from "react-icons/fa";
 import PaginatedItems from "../component/Pagination/Pagination";
 import "../assets/css/Pagination.css";
+import Nav from "../component/Dashboard/Nav";
 // import Charts from "../component/Charts/Charts";
 // import Timing from "../assets/Icon.svg";
 // import Message from "../assets/comment 1.svg";
 // import Cards from "../assets/post 2.svg";
 // import Calendery from "../assets/calendar 2.svg";
 export default function Home() {
-  const location = useLocation();
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -26,24 +25,7 @@ export default function Home() {
       />
 
       <div className="w-full lg:w-4/5 p-3 pt-0 lg:ml-[20%] ">
-        <div className="flex w-full lg:w-10/12 lg:justify-end gap-2 pt-2 items-center justify-between p-1 fixed z-40 backdrop-filter backdrop-blur-md backdrop-brightness-100 pb-3">
-          <div className="w-1/12 lg:hidden">
-            <button
-              onClick={() => {
-                setOpen(!open);
-              }}
-            >
-              <FaBars size="25px" />
-            </button>
-          </div>
-          <div className="w-4/12 h-full flex justify-center items-center gap-[5%] ">
-            <img src="" alt="admin" />
-            <div className=" flex flex-col">
-              <p>OUSSAMA DJELLOUL</p>
-              <p>admin</p>
-            </div>
-          </div>
-        </div>
+        <Nav  open={open} setOpen={setOpen} />
         <div className="pt-24 font-font relative">
           <div className="">
             <p className=" text-blu text-2xl font-semibold">Table of Cards</p>
@@ -70,10 +52,13 @@ export default function Home() {
               </button>
             </div>
             {/* add cards  */}
+           
+            <Link to='/new/card'>
             <button className=" h-12 mt-3 p-3 bg-[#183BB7] rounded-md text-white text-base font-semibold">
               <p className="hidden sm:flex">+ New card</p>
               <p className="sm:hidden ">+</p>
             </button>
+            </Link>
           </div>
           <div
             className="border-gray-200 w-full rounded-lg mt-5 overflow-y-auto"

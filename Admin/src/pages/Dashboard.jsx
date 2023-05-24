@@ -2,9 +2,6 @@ import React from "react";
 import SideBar from "../component/Dashboard/SideBar";
 // import { AiOutlineSearch } from "react-icons/ai";
 
-import { FaBars } from "react-icons/fa";
-import { AiOutlineDown } from "react-icons/ai";
-
 import Charts from "../component/Charts/Charts";
 import Timing from "../assets/Icon.svg";
 import Message from "../assets/comment 1.svg";
@@ -15,6 +12,9 @@ export default function Home() {
   const [open, setOpen] = React.useState(false);
 
   return (
+    <div className="w-full">
+      <Nav open={open} setOpen={setOpen} />
+    
     <div className="flex max-h-max">
       <SideBar
         open={open}
@@ -25,7 +25,6 @@ export default function Home() {
 
       <div className="w-full lg:w-4/5 p-3 pt-0 lg:ml-[20%] ">
 
-        <Nav open={open} setOpen={setOpen} />
         <div className="pt-20 font-font relative">
           <div className="lg:w-8/12 w-full p-3  flex justify-between">
             <p className=" text-blu text-2xl font-semibold">Dashboard</p>
@@ -187,6 +186,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

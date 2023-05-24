@@ -2,7 +2,7 @@ import { FaBars } from "react-icons/fa";
 import user from "../../assets/user.png"
 
 const Nav = (prop) => {
-    return (  <div className="flex w-full lg:w-10/12 lg:justify-end gap-2 pt-2 items-center justify-between p-1 fixed z-40 backdrop-filter backdrop-blur-md backdrop-brightness-100 pb-3">
+    return (  <div className="flex w-full lg:w-full lg:justify-end gap-2 pt-2 items-center justify-between p-1 fixed z-40 backdrop-filter backdrop-blur-md backdrop-brightness-100 pb-3">
     <div className="w-1/12 lg:hidden">
       <button
         onClick={() => {

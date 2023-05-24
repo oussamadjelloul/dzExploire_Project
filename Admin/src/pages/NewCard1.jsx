@@ -1,17 +1,23 @@
 import React from "react";
 import "../assets/css/EditCard.css";
 import SideBar from "../component/Dashboard/SideBar";
+import Nav from "../component/Dashboard/Nav";
 
 const NewCard1 = () => {
   const [images, setImages] = React.useState([]);
+  const [open, setOpen] = React.useState(false);
 
   return (
     <div>
+      <Nav open={open} setOpen={setOpen} />
       <div className="ContactUs">
         <div className="sideBar">
-          <SideBar />
+          <SideBar open={open}
+          setOpen={() => {
+          setOpen(!open);
+        }} />
         </div>
-        <div className="contact form">
+        <div className="contact form pt-28">
           <h2>New Card</h2>
           <form>
             <span>Fields marqued * are required</span>
