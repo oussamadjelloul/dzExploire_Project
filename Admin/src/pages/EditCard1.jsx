@@ -7,7 +7,7 @@ const EditCard1 = () => {
   return (
     <div>
       <div className="ContactUs">
-        <div class="sideBar"></div>
+        <div className="sideBar"></div>
         <div className="contact form">
           <h2>Edit Card</h2>
           <form>
@@ -146,19 +146,12 @@ const EditCard1 = () => {
                       //   onChange={(e) => {
                       // handlerImages(e);
                       onChange={(event) => {
-                        console.log(event.target.files);
-                        if (event.target.files.length > 0) {
-                          //   Array.from(event.target.files).forEach((e) => {
-
-                          var test = URL.createObjectURL(event);
-
-                          setImages([test, ...images]);
-                        }
-                        // setImages([event.target.files[0], ...images]);
-
-                        // img.current.src = test;
+                        var imgs = [];
+                        Array.from(event.target.files).forEach((file) => {
+                          imgs.push(URL.createObjectURL(file));
+                        });
+                        setImages([...imgs, ...images]);
                       }}
-                      //   }}
                     />
                   </div>
                   {images &&
@@ -170,7 +163,7 @@ const EditCard1 = () => {
                           style={{ backgroundImage: `url(${e})` }}
                         >
                           <i
-                            className=" fas fa-trash-alt trash-icon "
+                            className="fas fa-trash-alt trash-icon"
                             onClick={() => {
                               images.splice(index, 1);
                               setImages([...images]);
@@ -178,9 +171,7 @@ const EditCard1 = () => {
                           ></i>
                         </div>
                       );
-                    }
-                    )
-                  }
+                    })}
                 </div>
               </div>
 
