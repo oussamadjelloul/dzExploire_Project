@@ -1,12 +1,7 @@
-import { SearchComponent } from "../component/Search/SearchComponent";
-
 const Search = () => {
     return ( 
     <>
-        <div className='w-screen h-screen text-[#333] bg-[##F8F8F8]'>
-            <div className='h-[15vh]'></div>
-            <SearchComponent/>
-        </div>
+        <h3>Search</h3>
 
     </> );
 }

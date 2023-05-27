@@ -17,6 +17,8 @@ export default function App() {
   return (
    <Routes>
       <Route path="/" element={<Dashboard/>}/>
+      <Route path="/login" element={<Login />}/>
+      <Route path="/signup" element={<SignUp />}/>
       <Route path="/cards" element={<Cards/>}/>
       <Route path="/events" element={<Events />}/>
       <Route path="/new/card" element={<NewCard1 />}/>
@@ -25,8 +27,6 @@ export default function App() {
       <Route path="/edit/card" element={<EditCard1 />}/>
       <Route path="/edit/card/location" element={<EditCard2 />}/>
       <Route path="/edit/event" element={<EditEvent />}/>
-      <Route path="/login" element={<Login />}/>
-      <Route path="/signup" element={<SignUp />}/>
       <Route path="/frgpwd" element={<ForgotPassword />}/>
       <Route path="*" element={<NotFound />}/>
    </Routes>
