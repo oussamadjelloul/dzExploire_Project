@@ -2,7 +2,6 @@ import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup} from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import placeholder from "../../assets/Search/placeholder.png"
-import "./Map.css"
 
 import { Icon, divIcon, point } from "leaflet";
 import { MdLocationOn } from "react-icons/md";

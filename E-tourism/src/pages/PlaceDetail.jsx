@@ -6,7 +6,6 @@ import Detail from '../component/Place Detail/Detail';
 import Map from '../component/Place Detail/Map';
 import Events from '../component/Place Detail/Events';
 import Comment from '../component/Place Detail/Comment';
-import '../assets/css/place.css';
 
 
 
