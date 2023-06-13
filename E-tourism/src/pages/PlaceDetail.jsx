@@ -8,6 +8,7 @@ import Events from '../component/Place Detail/Events';
 import Comment from '../component/Place Detail/Comment';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import NavBar from '../component/Landing Page/NavBar';
 
 
 
@@ -32,6 +33,7 @@ const PlaceDetail = () => {
     console.log(id);
     return ( 
     <div>
+        <NavBar />
         <Hero place={place} />
         <div className='flex flex-col  justify-center items-center bg-[#F8F8F8]  gap-4 xl:px-[200px] lg:px-[120px] px-[20px]' >
             <Adress place={place}/>

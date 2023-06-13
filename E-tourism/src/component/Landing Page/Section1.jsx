@@ -8,6 +8,7 @@ import img5 from '../../assets/Landing Page/img5.png'
 import img6 from '../../assets/Landing Page/img6.png'
 
 import '../../index.css';
+import { Link } from "react-router-dom";
 const Section1 = () => {
     
     ////////////////////////////////////////////
@@ -72,12 +73,14 @@ const Section1 = () => {
                     <div className='relative flex justify-between py-10 w-[25vw]'>
                         {/* <div className={`absolute -top-${nbr2} -right-${nbr1}`}><img className='w-[8vw]' src={f} alt="f" /></div> */}
 
-
+                        <Link to="/search">
                         <button className='flex font-bold bg-[#142361] px-10 py-2 rounded-xl absolute button-0 '>
                             <p className='text-[#FFFFFF]'>Discover </p>
                             <p className='text-[#FFFFFF] pl-2'>New </p>
                             <p className='text-[#F2870C] pl-2'>Locations</p>
                         </button>
+                        </Link>
+
                     </div>
                     <div className='pt-10'> 
                         <p  className='text-[#142361] font-bold'>“I am not the same, having seen the moon</p>
