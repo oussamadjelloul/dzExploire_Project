@@ -1,16 +1,16 @@
 import Makam from '../../assets/Place Detail/Makam.png'
 import Position from '../../assets/Place Detail/position.png'
 
-const Hero = () => {
+const Hero = ({place}) => {
     return ( <div className="carousel w-full h-fit">
     <div id="slide1" className="carousel-item relative w-full">
         <div className='relative w-full '>
             <img src={Makam} className="w-full" />
             <div className='absolute top-2/3 left-1/4' >
-                <h3 className='lg:text-[64px] md:text-[48px] sm:text-[36px] text-[24px] text-white font-bold'>Makam El chahid</h3>
+                <h3 className='lg:text-[64px] md:text-[48px] sm:text-[36px] text-[24px] text-white font-bold'>{place.place_title}</h3>
                 <div className='flex justify-start items-center sm:gap-3 gap-1 sm:mt-2'>
                     <img src={Position} alt='position' className='lg:w-[20px] lg:h-[20px] sm:w-[18px] sm:h-[18px] w-[12px] h-[12px]'/>
-                <h3 className='lg:text-[18px] sm:text-[14px] text-[11px] text-white'>Chemin Omar kechkar, El Madania, Algiers, Algeria</h3>
+                <h3 className='lg:text-[18px] sm:text-[14px] text-[11px] text-white'>{place.address}</h3>
                 </div>
             </div>
 
@@ -23,10 +23,10 @@ const Hero = () => {
     <div id="slide2" className="carousel-item relative w-full">
         <img src={Makam} className="w-full" />
         <div className='absolute top-2/3 left-1/4' >
-                <h3 className='lg:text-[64px] md:text-[48px] sm:text-[36px] text-[24px] text-white font-bold'>Makam El chahid</h3>
+                <h3 className='lg:text-[64px] md:text-[48px] sm:text-[36px] text-[24px] text-white font-bold'>{place.place_title}</h3>
                 <div className='flex justify-start items-center sm:gap-3 gap-1 sm:mt-2'>
                     <img src={Position} alt='position' className='lg:w-[20px] lg:h-[20px] sm:w-[18px] sm:h-[18px] w-[12px] h-[12px]'/>
-                <h3 className='lg:text-[18px] sm:text-[14px] text-[11px] text-white'>Chemin Omar kechkar, El Madania, Algiers, Algeria</h3>
+                <h3 className='lg:text-[18px] sm:text-[14px] text-[11px] text-white'>{place.address}</h3>
                 </div>
             </div>
         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -37,10 +37,10 @@ const Hero = () => {
     <div id="slide3" className="carousel-item relative w-full">
         <img src={Makam} className="w-full" />
         <div className='absolute top-2/3 left-1/4' >
-                <h3 className='lg:text-[64px] md:text-[48px] sm:text-[36px] text-[24px] text-white font-bold'>Makam El chahid</h3>
+                <h3 className='lg:text-[64px] md:text-[48px] sm:text-[36px] text-[24px] text-white font-bold'>{place.place_title}</h3>
                 <div className='flex justify-start items-center sm:gap-3 gap-1 sm:mt-2'>
                     <img src={Position} alt='position' className='lg:w-[20px] lg:h-[20px] sm:w-[18px] sm:h-[18px] w-[12px] h-[12px]'/>
-                <h3 className='lg:text-[18px] sm:text-[14px] text-[11px] text-white'>Chemin Omar kechkar, El Madania, Algiers, Algeria</h3>
+                <h3 className='lg:text-[18px] sm:text-[14px] text-[11px] text-white'>{place.address}</h3>
                 </div>
             </div>
         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -51,10 +51,10 @@ const Hero = () => {
     <div id="slide4" className="carousel-item relative w-full">
         <img src={Makam} className="w-full" />
         <div className='absolute top-2/3 left-1/4' >
-                <h3 className='lg:text-[64px] md:text-[48px] sm:text-[36px] text-[24px] text-white font-bold'>Makam El chahid</h3>
+                <h3 className='lg:text-[64px] md:text-[48px] sm:text-[36px] text-[24px] text-white font-bold'>{place.place_title}</h3>
                 <div className='flex justify-start items-center sm:gap-3 gap-1 sm:mt-2'>
                     <img src={Position} alt='position' className='lg:w-[20px] lg:h-[20px] sm:w-[18px] sm:h-[18px] w-[12px] h-[12px]'/>
-                <h3 className='lg:text-[18px] sm:text-[14px] text-[11px] text-white'>Chemin Omar kechkar, El Madania, Algiers, Algeria</h3>
+                <h3 className='lg:text-[18px] sm:text-[14px] text-[11px] text-white'>{place.address}</h3>
                 </div>
             </div>
         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">

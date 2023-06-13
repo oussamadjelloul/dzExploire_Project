@@ -1,7 +1,7 @@
 import user from '../../assets/Place Detail/user.jpg'
 
 
-const CommentCard = () => {
+const CommentCard = ({comment}) => {
     return ( 
     <div className="flex sm:flex-row  flex-col justify-center sm:items-center border-b-2 px-8 ">
         <div className="sm:p-10 p-2    h-full">
@@ -10,13 +10,13 @@ const CommentCard = () => {
                     <img src={user} alt="user" className='rounded-full w-full h-full' />
                 </div>
                 <div className='self-start'>
-                    <h3 className='text-[18px] font-bold'>Steve Marker</h3>
-                    <h3 className='text-[16px] font-semibold text-[#142361]'>Desginer</h3>
+                    <h3 className='text-[18px] font-bold'>{comment.name_user}</h3>
+                    <h3 className='text-[16px] font-semibold text-[#142361]'>{comment.job_user}</h3>
                 </div>
             </div>
         </div>
         <div className='p-3 pl-4 flex-1 h-fit  sm:border-l-2'>
-            <h4 className='sm:text-[16px] text-[13px] w-3/4  sm:mx-0 mx-auto text-left '>Hi. I’m thinking I may have signed up for the <br/> wrong type of blog. I’ve just created a wordpress.com personal blog site (ancestry). I’m just starting the site but am getting notifications that to use ANY plug-ins I need to upgrade to a business account (yikes not inexpensive!). Should I have signed up for WordPress.org??</h4>
+            <h4 className='sm:text-[18px] text-[15px] w-3/4  sm:mx-0 mx-auto text-left '>{comment.comment_content}</h4>
         </div>
     </div> );
 }

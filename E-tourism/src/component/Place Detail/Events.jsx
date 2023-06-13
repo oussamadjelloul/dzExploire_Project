@@ -12,7 +12,7 @@ import { Navigation, Pagination } from "swiper";
 import EventCard from "./EventCard";
 import { useEffect, useState } from "react";
 
-export default function Events() {
+export default function Events({events}) {
 const [nbr,setNbr]=useState(3)
 useEffect(() => {
     // Function to handle window resize event
@@ -54,10 +54,13 @@ useEffect(() => {
         modules={[Pagination, Navigation]}
         className="mySwiper"
       >
+        {events.map(elem=>{
+          return (<SwiperSlide key={elem._id}><EventCard event={elem} /></SwiperSlide>)
+        })}
+        
+        {/* <SwiperSlide><EventCard/></SwiperSlide>
         <SwiperSlide><EventCard/></SwiperSlide>
-        <SwiperSlide><EventCard/></SwiperSlide>
-        <SwiperSlide><EventCard/></SwiperSlide>
-        <SwiperSlide><EventCard/></SwiperSlide>
+        <SwiperSlide><EventCard/></SwiperSlide> */}
       </Swiper>
     </div>
   );
