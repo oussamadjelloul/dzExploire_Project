@@ -26,7 +26,7 @@ export const MapComponent = ({places,setMapRef}) => {
   
   return (
     <MapContainer 
-      whenReady={({ target }) => setMapRef(target)}
+      ref={setMapRef}
       center={[36.737232,3.086472]}
       zoom={6}
     >

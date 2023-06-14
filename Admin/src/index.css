@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+}
+
 #login {
     background-image:  url("../src/assets/Login/Background.png");
     background-position: center; /* Center the image */
