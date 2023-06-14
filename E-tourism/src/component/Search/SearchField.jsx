@@ -25,7 +25,7 @@ export const SearchField = ({places,trigger,data,setPlaces,themes,categories}) =
 
     }
     if (category) {
-      result = result.filter(place => place.categorie === category)
+      result = result.filter(place => place.category === category)
       console.log(category);
 
     }
