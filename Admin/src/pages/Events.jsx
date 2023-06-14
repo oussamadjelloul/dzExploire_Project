@@ -18,6 +18,8 @@ export default function Home() {
 
   return (
     <div className="flex max-h-max">
+      <Nav open={open} setOpen={setOpen}/>
+
       <SideBar
         open={open}
         setOpen={() => {
@@ -26,7 +28,6 @@ export default function Home() {
       />
 
       <div className="w-full lg:w-4/5 p-3 pt-0 lg:ml-[20%] ">
-        <Nav open={open} setOpen={setOpen}/>
         <div className="pt-24 font-font relative">
           <div className="">
             <p className=" text-blu text-2xl font-semibold">Table of Events</p>

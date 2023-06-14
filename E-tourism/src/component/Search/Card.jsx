@@ -2,12 +2,14 @@ import { MdOutlineWatchLater } from 'react-icons/md';
 import { BiBus } from 'react-icons/bi';
 import { MdLocationOn } from 'react-icons/md';
 import { BsFillEyeFill } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 
 
 export const Card = ({handleOnSetView,detail}) => {
   return (
-    
+
+      <Link to={"/place/"+detail._id}>
         <div onMouseEnter={handleOnSetView} className='px-4 mb-8'>
           <div className="bg-white border border-gray-200 rounded shadow">
             <a href="#">
@@ -44,6 +46,6 @@ export const Card = ({handleOnSetView,detail}) => {
             </div>
           </div>  
         </div>
-
+      </Link>
   )
 }
