@@ -13,6 +13,7 @@ import EditEvent from "./pages/EditEvent";
 import ForgotPassword from "./pages/ForgotPassword";
 import NotFound from "./pages/NotFound";
 import RequireAuth from "./component/Auth/RequireAuth";
+import { NewCardContextProvider } from "./context/NewCard";
 
 export default function App() {
   return (
@@ -20,8 +21,8 @@ export default function App() {
       <Route path="/" element={<RequireAuth><Dashboard/></RequireAuth>}/>
       <Route path="/cards" element={<RequireAuth><Cards/></RequireAuth>}/>
       <Route path="/events" element={<RequireAuth><Events /></RequireAuth>}/>
-      <Route path="/new/card" element={<RequireAuth><NewCard1 /></RequireAuth>}/>
-      <Route path="/new/card/location" element={<RequireAuth><NewCard2 /></RequireAuth>}/>
+        <Route path="/new/card" element={<RequireAuth><NewCard1 /></RequireAuth>}/>
+        <Route path="/new/card/location" element={<RequireAuth><NewCard2 /></RequireAuth>}/>
       <Route path="/new/event" element={<RequireAuth><NewEvent /></RequireAuth>}/>
       <Route path="/edit/card" element={<RequireAuth><EditCard1 /></RequireAuth>}/>
       <Route path="/edit/card/location" element={<RequireAuth><EditCard2 /></RequireAuth>}/>
