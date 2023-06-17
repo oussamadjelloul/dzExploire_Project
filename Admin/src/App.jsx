@@ -17,20 +17,21 @@ import { NewCardContextProvider } from "./context/NewCard";
 
 export default function App() {
   return (
-   <Routes>
-      <Route path="/" element={<RequireAuth><Dashboard/></RequireAuth>}/>
-      <Route path="/cards" element={<RequireAuth><Cards/></RequireAuth>}/>
-      <Route path="/events" element={<RequireAuth><Events /></RequireAuth>}/>
-        <Route path="/new/card" element={<RequireAuth><NewCard1 /></RequireAuth>}/>
-        <Route path="/new/card/location" element={<RequireAuth><NewCard2 /></RequireAuth>}/>
-      <Route path="/new/event" element={<RequireAuth><NewEvent /></RequireAuth>}/>
-      <Route path="/edit/card" element={<RequireAuth><EditCard1 /></RequireAuth>}/>
-      <Route path="/edit/card/location" element={<RequireAuth><EditCard2 /></RequireAuth>}/>
-      <Route path="/edit/event" element={<RequireAuth><EditEvent /></RequireAuth>}/>
-      <Route path="/login" element={<Login />}/>
-      <Route path="/signup" element={<RequireAuth><SignUp /></RequireAuth>}/>
-      <Route path="/frgpwd" element={<ForgotPassword />}/>
-      <Route path="*" element={<NotFound />}/>
-   </Routes>
-  )
+    <Routes>
+      <Route path="/" element={<Dashboard />} />
+      <Route path="/cards" element={<Cards />} />
+      <Route path="/events" element={<Events />} />
+      <Route path="/new/card" element={<NewCard1 />} />
+      <Route path="/new/card/location" element={<NewCard2 />} />
+      <Route path="/new/event" element={<NewEvent />} />
+      <Route path="/edit/card" element={<EditCard1 />} />
+      <Route path="/edit/card/location/:id" element={<EditCard2 />} />
+      <Route path="/edit/event" element={<EditEvent />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/frgpwd" element={<ForgotPassword />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
 }
+
