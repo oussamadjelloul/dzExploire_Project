@@ -18,7 +18,7 @@ const EditCard2 = () => {
     
 
   function MyComponent() {
-    const map = useMapEvents({
+    useMapEvents({
       click: (e) => {
         const { lat, lng } = e.latlng;
         setLat(lat);
