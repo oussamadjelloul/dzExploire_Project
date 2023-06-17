@@ -21,12 +21,12 @@ const createClusterCustomIcon = function (cluster) {
   });
 };
 
-export const MapComponent = ({places,setMapRef}) => {
+export const MapComponent = ({places,mapRef}) => {
 
   
   return (
     <MapContainer 
-      whenReady={({ target }) => setMapRef(target)}
+      ref={mapRef}
       center={[36.737232,3.086472]}
       zoom={6}
     >
@@ -39,7 +39,7 @@ export const MapComponent = ({places,setMapRef}) => {
         chunkedLoading
         iconCreateFunction={createClusterCustomIcon}
       >
-        {places.map((place) => (
+        {places && places.map((place) => (
           <Marker key={place.popUp} position={[place.lat,place.long]} icon={customIcon}>
             <Popup>
               <Link to={"/place/"+place._id}>
