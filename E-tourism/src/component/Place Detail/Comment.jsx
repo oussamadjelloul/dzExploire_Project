@@ -12,7 +12,7 @@ import { Navigation, Pagination } from "swiper";
 import CommentCard from "./CommentCard";
 import AddComment from "./AddComment";
 
-export default function Events() {
+export default function Events({comments ,id,func}) {
 
     return (
 
@@ -29,12 +29,15 @@ export default function Events() {
         modules={[Pagination, Navigation]}
         className="mySwiper"
       >
+        {comments.map((elem)=>{
+          return (<SwiperSlide key={elem._id}><CommentCard comment={elem}/></SwiperSlide>)
+        })}
+        {/* <SwiperSlide><CommentCard/></SwiperSlide>
         <SwiperSlide><CommentCard/></SwiperSlide>
         <SwiperSlide><CommentCard/></SwiperSlide>
-        <SwiperSlide><CommentCard/></SwiperSlide>
-        <SwiperSlide><CommentCard/></SwiperSlide>
+        <SwiperSlide><CommentCard/></SwiperSlide> */}
       </Swiper>
-      <AddComment />
+      <AddComment id={id} func={func}/>
     </div>
   );
 }

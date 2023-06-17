@@ -12,6 +12,8 @@ import EditCard2 from "./pages/EditCard2";
 import EditEvent from "./pages/EditEvent";
 import ForgotPassword from "./pages/ForgotPassword";
 import NotFound from "./pages/NotFound";
+import RequireAuth from "./component/Auth/RequireAuth";
+import { NewCardContextProvider } from "./context/NewCard";
 
 export default function App() {
   return (
@@ -32,3 +34,4 @@ export default function App() {
     </Routes>
   );
 }
+

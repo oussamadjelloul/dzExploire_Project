@@ -3,10 +3,18 @@ import { useState } from "react";
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import Nav from "../component/Dashboard/Nav";
 import SideBar from "../component/Dashboard/SideBar";
+import { useEffect } from "react";
+import { useNewCardContext } from "../hooks/useNewCardContext";
 const NewCard2 = () => {
   const [open, setOpen] = useState(false);
   const [lat, setLat] = useState(36.737232);
   const [long, setLong] = useState(3.086472);
+   const  {NewCard} = useNewCardContext()
+
+useEffect(()=>{
+    console.log(NewCard);
+
+},[])
 
   function MyComponent() {
     const map = useMapEvents({
@@ -45,4 +53,3 @@ const NewCard2 = () => {
   );
 };
 
-export default NewCard2;

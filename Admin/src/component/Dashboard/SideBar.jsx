@@ -5,6 +5,7 @@ import { RiLogoutCircleRLine } from "react-icons/ri";
 import Dashboard from "../../assets/category.svg";
 import Cards from "../../assets/post 2.svg";
 import Calendery from "../../assets/calendar 2.svg";
+import { useLogout } from "../../hooks/useLogout";
 // import {
 //   EventIcon,
 //   cardIcons,
@@ -15,6 +16,8 @@ export default function SideBar({ open, setOpen }) {
   // const { user, update } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  const {logout} = useLogout()
+
   React.useEffect(() => {}, [location.pathname]);
   return (
     <div
@@ -37,9 +40,9 @@ export default function SideBar({ open, setOpen }) {
         <div className="w-full m-auto h-28 flex flex-col justify-between text-center lg:mt-5 ">
           {/* <img src={logo} alt="logo" /> */}
           <p className=" font-logo text-blu font-bold text-3xl">Roadie</p>
-          <Link to="/new/card">
+          <Link to="/signup">
           <button className=" bg-blue bg-[#183BB7] text-white p-2 rounded-md  text-lg">
-            <span className="text-2xl font-semibold">+</span> Post New Card
+            <span className="text-2xl font-semibold">+</span> ADD New User
           </button>
           </Link>
         </div>
@@ -92,14 +95,8 @@ export default function SideBar({ open, setOpen }) {
       </div>
       <div className="flex justify-center w-5/6 m-auto mb-10 gap-[5%] items-center ">
         <button
-          onClick={() => {
-            signout().then(() => {
-              update({});
-              sessionStorage.removeItem(
-                "firebase:authUser:AIzaSyDuX08nZV7p6cIZAGJMc8l_ujU1zBUsArw:[DEFAULT]"
-              );
-              navigate("/login");
-            });
+          onClick={() => { logout()
+            navigate('/login')
           }}
           className="flex gap-2 items-center"
         >
