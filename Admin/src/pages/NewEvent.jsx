@@ -1,11 +1,69 @@
 import React from "react";
+import {useRef, useState } from "react";
+import {toast} from 'react-toastify';
+import axios from "axios";
 import "../assets/css/EditCard.css";
 import SideBar from "../component/Dashboard/SideBar";
 import Nav from "../component/Dashboard/Nav";
 
 const NewEvent = () => {
-  const [images, setImages] = React.useState([]);
+  
+  const titleRef = useRef(null);
+  const [state, setState] = useState('Alger');
+  const [relative, setRelative] = useState('Place 1 (title)');
+  const dateTime= useRef(null);
+  const descriptionRef = useRef(null);
+  const [images, setImages] = useState([]);
   const [open, setOpen] = React.useState(false);
+  const [imgs,setImgs]=useState([])
+
+  async function handleClick(e) {
+
+      if(images !== []) {
+          const files = images;
+          const formData = Array.from({length:files.length}, () => {
+                  return new FormData();
+          });
+          for(let i=0; i<files.length; i++) {
+              formData[i].append('file', files[i]);
+              formData[i].append('upload_preset', 'ky_daoud');
+              let response
+              try {
+                  response = await axios.post(
+                      'https://api.cloudinary.com/v1_1/dwufdyiuk/image/upload',
+                      formData[i]
+                  );
+              } catch (error) {
+                  console.log(error);
+              }
+              if(response!=null) {
+                  imgs[i] = response.data.secure_url;
+              }
+          }
+      }
+
+      const data = {
+          place_title: titleRef.current.value,
+          state: state,
+          datetime: dateTime.current.value,
+          relative: relative,
+          description: descriptionRef.current.value,
+          images: imgs
+      };
+
+      if(data.place_title==='' || data.state==='' || data.datetime==='' || data.relative==='' || data.description==='' )
+      {
+          toast.error('Please Fill All the fields');
+      }
+      else if (images.length===0)
+      {
+        toast.error('Please upload some images');
+      }
+      else {
+          console.log(data);
+         
+      }
+  }
 
   return (
     <div>
@@ -26,13 +84,15 @@ const NewEvent = () => {
                 <div className="inputBox">
                   <span>Event Title*</span>
                   <input
+                    ref={titleRef}
                     type="text"
                     placeholder="Here you introduce your card"
                   />
                 </div>
                 <div className="inputBox">
-                  <span>Date and title*</span>
+                  <span>Date and time*</span>
                   <input
+                    ref={dateTime}
                     type="datetime-local"
                     placeholder="Here you introduce the address"
                   />
@@ -44,8 +104,8 @@ const NewEvent = () => {
               <div className="row40">
                 <div className="dropdown">
                   <span>State*</span>
-                  <select className="select">
-                  <option className="selected">Now</option>
+                  <select className="select" onChange={(e)=>{setState(e.target.value)}}>
+                    <option className="selected">Now</option>
                     <option>Comming</option>
                   </select>
                 </div>
@@ -54,7 +114,7 @@ const NewEvent = () => {
               <div className="row40">
                 <div className="dropdown">
                   <span>Card relative to this events*</span>
-                  <select className="select">
+                  <select className="select" onChange={(e)=>{setRelative(e.target.value)}}>
                     <option className="selected">Place 1 (title)</option>
                     <option>Place 2 (title)</option>
                   </select>
@@ -64,7 +124,7 @@ const NewEvent = () => {
               <div className="row80">
                 <div className="inputBox">
                   <span>Description*</span>
-                  <textarea placeholder="The description"></textarea>
+                  <textarea placeholder="The description" ref={descriptionRef}></textarea>
                 </div>
               </div>
 
@@ -115,7 +175,7 @@ const NewEvent = () => {
 
               <div className="next">
                 <div className="inputBox">
-                  <input type="submit" value="Next" id="submitForm" />
+                  <input onClick={handleClick} type="submit" value="Next" id="submitForm" />
                 </div>
               </div>
             </div>
