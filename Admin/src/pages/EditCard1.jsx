@@ -140,7 +140,7 @@ useEffect(()=>{
             city: city,
             theme: theme,
             description: descriptionRef.current.value,
-            images: imgs
+            images: imgs,
         };
         e.preventDefault();
        if(data.place_title==='' || data.address==='' || data.state==='' || data.category==='' || data.opening_hour==='' || data.closing_hour==='' || data.transport==='' || data.city==='' || data.theme==='' || data.description==='' )
