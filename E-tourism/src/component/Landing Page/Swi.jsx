@@ -9,7 +9,20 @@ import Comentaire from "./Comentaire";
 
 // import required modules
 import { Navigation, Autoplay } from "swiper";
+import { useEffect, useState } from "react";
 const Swi = () => {
+  const [comments,setComments] = useState(null)
+  useEffect(()=> {
+    const fun = async () => {
+       
+       let response = await fetch("http://localhost:5000/getComments");
+       let data = await response.json();
+       setComments(data)
+       console.log(data);
+       
+    }
+    fun()
+  },[])
     return (  
         <div>
               <div className='flex justify-center '>
@@ -25,9 +38,12 @@ const Swi = () => {
         }}
   
       >
+        {/* <SwiperSlide><Comentaire/></SwiperSlide>
         <SwiperSlide><Comentaire/></SwiperSlide>
-        <SwiperSlide><Comentaire/></SwiperSlide>
-        <SwiperSlide><Comentaire/></SwiperSlide>
+        <SwiperSlide><Comentaire/></SwiperSlide> */}
+        {comments && comments.map((index,comment)=>(
+          <SwiperSlide key={index}><Comentaire/></SwiperSlide>
+        ))}
       
 
       
