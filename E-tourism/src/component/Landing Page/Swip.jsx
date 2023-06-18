@@ -30,11 +30,25 @@ const Swip = () => {
     // Call the handleResize function once on component mount
     handleResize();
 
+    
+
     // Clean up the event listener on component unmount
     return () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+  const [places,setPlaces] = useState(null) 
+  useEffect(()=> {
+    const fun = async () => {
+       
+       let response = await fetch("http://localhost:5000/getplaces");
+       
+       let data = await response.json();
+       setPlaces(data.slice(0,6))
+       
+    }
+    fun()
+  },[])
     return ( 
       <div className='flex justify-center mb-5'>
     <div className='w-[90vw] '>
@@ -53,12 +67,15 @@ const Swip = () => {
 
        
       >
+        {/* <SwiperSlide><Comp/></SwiperSlide>
         <SwiperSlide><Comp/></SwiperSlide>
         <SwiperSlide><Comp/></SwiperSlide>
         <SwiperSlide><Comp/></SwiperSlide>
         <SwiperSlide><Comp/></SwiperSlide>
-        <SwiperSlide><Comp/></SwiperSlide>
-        <SwiperSlide><Comp/></SwiperSlide>
+        <SwiperSlide><Comp/></SwiperSlide> */}
+        {places && places.map((place,index)=> (
+          <SwiperSlide key={index}><Comp place={place}/></SwiperSlide>
+        ))}
 
       
     

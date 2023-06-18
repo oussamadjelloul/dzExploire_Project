@@ -17,7 +17,7 @@ const NavBar = () => {
     <div className="">
            <div className={`hidden md:block   w-full top-0  z-50 fixed ${showJoin ? "backdrop-blur-lg" : ""}`}>
             <div className=" mx-20 md:py-2 lg:py-4  text-blue-900 border-b-2 border-blue-800 flex justify-between">
-           <a href="" className="text-blue-900 text-4xl  font-bold">Roadie</a>
+           <Link to='/' className="text-blue-900 text-4xl  font-bold">E-tourism</Link>
            <ul className="w-[15vw] flex text-lg font-medium  justify-between ">
                 <li className="lg:text-2xl hover:text-[#FC6401] hover:scale-110"><Link to='/'>Home</Link></li>
                 <li className="lg:text-2xl hover:text-[#FC6401] hover:scale-110"><Link to="/search">Search</Link></li>

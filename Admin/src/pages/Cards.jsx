@@ -1,12 +1,14 @@
 import React from "react";
 import SideBar from "../component/Dashboard/SideBar";
-import { Link} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Filter from "../assets/filter-search.png";
 import { BiSearch } from "react-icons/bi";
 // import { AiOutlineSearch } from "react-icons/ai";
 import PaginatedItems from "../component/Pagination/Pagination";
 import "../assets/css/Pagination.css";
 import Nav from "../component/Dashboard/Nav";
+import { DeleteCard, Cards, nbPl, SerchePlaces } from '../api/api'
+import { useAuthContext } from "../hooks/useAuthContext";
 // import Charts from "../component/Charts/Charts";
 // import Timing from "../assets/Icon.svg";
 // import Message from "../assets/comment 1.svg";
@@ -14,10 +16,86 @@ import Nav from "../component/Dashboard/Nav";
 // import Calendery from "../assets/calendar 2.svg";
 export default function Home() {
   const [open, setOpen] = React.useState(false);
+  const [data, setData] = React.useState([]);
+  const [page, setPage] = React.useState(0);
+  const [total, setTotale] = React.useState(0);
+  const { user } = useAuthContext();
+  const [reload, setReload] = React.useState(false)
+  const [search, setSearch] = React.useState("");
 
+  async function Serch(value) {
+    if (value !== "") {
+      await axios(`${SerchePlaces} / /${value}`, {
+        headers: {
+          "Content-Type": "application/json",
+          'accestoken': user.token,
+        },
+      }).then((e) => {
+        setData([...e.data])
+        // setReload(!reload)
+      })
+    } else { setReload(!reload) }
+  }
+
+  async function handlerDelete(id) {
+    let headersList = {
+      "Accept": "*/*",
+      "accestoken": user.token,
+      "Content-Type": "application/json"
+    }
+
+    let bodyContent = JSON.stringify({
+      "id": id
+    });
+
+    let response = await fetch(DeleteCard, {
+      method: "DELETE",
+      body: bodyContent,
+      headers: headersList
+    });
+    let data = await response.text();
+    if (response.status == 200) {
+      setReload(!reload);
+    }
+  }
+
+  React.useEffect(() => {
+    async function FetchData() {
+      var response = await fetch(`${Cards}/${page}`, {
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json",
+          'accestoken': user.token,
+        }
+      })
+      var jsonData = await response.json();
+      setData([...jsonData]);
+    }
+    FetchData();
+    // nomber total of Event :
+    async function getTotal() {
+      var response = await fetch(nbPl, {
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json",
+          'accestoken': user.token,
+        }
+      })
+      var jsonData = await response.json();
+      console.log(jsonData.length)
+      setTotale(jsonData.length)
+    }
+    getTotal();
+  }, [page, reload])
+
+
+const navigate = useNavigate()
+const handlerUpdate=(id)=>{
+  navigate('/edit/card/'+id)
+}
   return (
     <div className="flex max-h-max">
-      <Nav  open={open} setOpen={setOpen} />
+      <Nav open={open} setOpen={setOpen} />
       <SideBar
         open={open}
         setOpen={() => {
@@ -38,6 +116,8 @@ export default function Home() {
                   type="text"
                   className="w-full h-full p-1 outline-none pr-5 rounded-md "
                   placeholder="Search content.."
+                  value={search}
+                  onChange={(e) => { setSearch(e.target.value); Serch(e.target.value) }}
                 />
                 <button>
                   <BiSearch
@@ -46,18 +126,18 @@ export default function Home() {
                   />
                 </button>
               </div>
-              <button className="border h-12  mt-3 rounded-md border-gray-300 p-2 w-3/12 flex justify-center items-center">
+              {/* <button className="border h-12  mt-3 rounded-md border-gray-300 p-2 w-3/12 flex justify-center items-center">
                 <img src={Filter} />
                 <p className="text-gray-400 text-base ">Filter</p>
-              </button>
+              </button> */}
             </div>
             {/* add cards  */}
-           
+
             <Link to='/new/card'>
-            <button className=" h-12 mt-3 p-3 bg-[#183BB7] rounded-md text-white text-base font-semibold">
-              <p className="hidden sm:flex">+ New card</p>
-              <p className="sm:hidden ">+</p>
-            </button>
+              <button className=" h-12 mt-3 p-3 bg-[#183BB7] rounded-md text-white text-base font-semibold">
+                <p className="hidden sm:flex">+ New card</p>
+                <p className="sm:hidden ">+</p>
+              </button>
             </Link>
           </div>
           <div
@@ -80,218 +160,43 @@ export default function Home() {
                 </tr>
               </thead>
               <tbody className=" rounded-lg">
-                {/* {data.length > 0 &&
-                  data.map((item, index) => {
-                    return ( */}
-                <tr
-                  //   key={index}
-                  className=""
-                  //   style={{
-                  //     background:
-                  //       index % 2 === 0 ? "rgb(245, 245, 245,0.7)" : "white",
-                  //   }}
-                >
-                  <td className="pt-3 pb-3 text-base">Mkam El chahid </td>
-                  <td className="pt-3 pb-3 text-base">Alger</td>
-                  <td className="pt-3 pb-3 text-base">
-                    Chemin Omar kechkar, El Madania
-                  </td>
-                  <td className="pt- pb-3 text-base flex gap-3 justify-center items-center ">
-                    <button className=" text-xs text-white bg-blue-500 p-1 rounded-md mt-2">
-                      modify
-                    </button>
-                    <button className=" mt-2 text-xs text-white bg-red-500 p-1 rounded-md">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-                <tr
-                  //   key={index}
-                  className=""
-                  //   style={{
-                  //     background:
-                  //       index % 2 === 0 ? "rgb(245, 245, 245,0.7)" : "white",
-                  //   }}
-                >
-                  <td className="pt-3 pb-3 text-base">Mkam El chahid </td>
-                  <td className="pt-3 pb-3 text-base">Alger</td>
-                  <td className="pt-3 pb-3 text-base">
-                    Chemin Omar kechkar, El Madania
-                  </td>
-                  <td className="pt- pb-3 text-base flex gap-3 justify-center items-center ">
-                    <button className=" text-xs text-white bg-blue-500 p-1 rounded-md mt-2">
-                      modify
-                    </button>
-                    <button className=" mt-2 text-xs text-white bg-red-500 p-1 rounded-md">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-                <tr
-                  //   key={index}
-                  className=""
-                  //   style={{
-                  //     background:
-                  //       index % 2 === 0 ? "rgb(245, 245, 245,0.7)" : "white",
-                  //   }}
-                >
-                  <td className="pt-3 pb-3 text-base">Mkam El chahid </td>
-                  <td className="pt-3 pb-3 text-base">Alger</td>
-                  <td className="pt-3 pb-3 text-base">
-                    Chemin Omar kechkar, El Madania
-                  </td>
-                  <td className="pt- pb-3 text-base flex gap-3 justify-center items-center ">
-                    <button className=" text-xs text-white bg-blue-500 p-1 rounded-md mt-2">
-                      modify
-                    </button>
-                    <button className=" mt-2 text-xs text-white bg-red-500 p-1 rounded-md">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-                <tr
-                  //   key={index}
-                  className=""
-                  //   style={{
-                  //     background:
-                  //       index % 2 === 0 ? "rgb(245, 245, 245,0.7)" : "white",
-                  //   }}
-                >
-                  <td className="pt-3 pb-3 text-base">Mkam El chahid </td>
-                  <td className="pt-3 pb-3 text-base">Alger</td>
-                  <td className="pt-3 pb-3 text-base">
-                    Chemin Omar kechkar, El Madania
-                  </td>
-                  <td className="pt- pb-3 text-base flex gap-3 justify-center items-center ">
-                    <button className=" text-xs text-white bg-blue-500 p-1 rounded-md mt-2">
-                      modify
-                    </button>
-                    <button className=" mt-2 text-xs text-white bg-red-500 p-1 rounded-md">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-                <tr
-                  //   key={index}
-                  className=""
-                  //   style={{
-                  //     background:
-                  //       index % 2 === 0 ? "rgb(245, 245, 245,0.7)" : "white",
-                  //   }}
-                >
-                  <td className="pt-3 pb-3 text-base">Mkam El chahid </td>
-                  <td className="pt-3 pb-3 text-base">Alger</td>
-                  <td className="pt-3 pb-3 text-base">
-                    Chemin Omar kechkar, El Madania
-                  </td>
-                  <td className="pt- pb-3 text-base flex gap-3 justify-center items-center ">
-                    <button className=" text-xs text-white bg-blue-500 p-1 rounded-md mt-2">
-                      modify
-                    </button>
-                    <button className=" mt-2 text-xs text-white bg-red-500 p-1 rounded-md">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-                <tr
-                  //   key={index}
-                  className=""
-                  //   style={{
-                  //     background:
-                  //       index % 2 === 0 ? "rgb(245, 245, 245,0.7)" : "white",
-                  //   }}
-                >
-                  <td className="pt-3 pb-3 text-base">Mkam El chahid </td>
-                  <td className="pt-3 pb-3 text-base">Alger</td>
-                  <td className="pt-3 pb-3 text-base">
-                    Chemin Omar kechkar, El Madania
-                  </td>
-                  <td className="pt- pb-3 text-base flex gap-3 justify-center items-center ">
-                    <button className=" text-xs text-white bg-blue-500 p-1 rounded-md mt-2">
-                      modify
-                    </button>
-                    <button className=" mt-2 text-xs text-white bg-red-500 p-1 rounded-md">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-                <tr
-                  //   key={index}
-                  className=""
-                  //   style={{
-                  //     background:
-                  //       index % 2 === 0 ? "rgb(245, 245, 245,0.7)" : "white",
-                  //   }}
-                >
-                  <td className="pt-3 pb-3 text-base">Mkam El chahid </td>
-                  <td className="pt-3 pb-3 text-base">Alger</td>
-                  <td className="pt-3 pb-3 text-base">
-                    Chemin Omar kechkar, El Madania
-                  </td>
-                  <td className="pt- pb-3 text-base flex gap-3 justify-center items-center ">
-                    <button className=" text-xs text-white bg-blue-500 p-1 rounded-md mt-2">
-                      modify
-                    </button>
-                    <button className=" mt-2 text-xs text-white bg-red-500 p-1 rounded-md">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-                <tr
-                  //   key={index}
-                  className=""
-                  //   style={{
-                  //     background:
-                  //       index % 2 === 0 ? "rgb(245, 245, 245,0.7)" : "white",
-                  //   }}
-                >
-                  <td className="pt-3 pb-3 text-base">Mkam El chahid </td>
-                  <td className="pt-3 pb-3 text-base">Alger</td>
-                  <td className="pt-3 pb-3 text-base">
-                    Chemin Omar kechkar, El Madania
-                  </td>
-                  <td className="pt- pb-3 text-base flex gap-3 justify-center items-center ">
-                    <button className=" text-xs text-white bg-blue-500 p-1 rounded-md mt-2">
-                      modify
-                    </button>
-                    <button className=" mt-2 text-xs text-white bg-red-500 p-1 rounded-md">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-                <tr
-                  //   key={index}
-                  className=""
-                  //   style={{
-                  //     background:
-                  //       index % 2 === 0 ? "rgb(245, 245, 245,0.7)" : "white",
-                  //   }}
-                >
-                  <td className="pt-3 pb-3 text-base">Mkam El chahid </td>
-                  <td className="pt-3 pb-3 text-base">Alger</td>
-                  <td className="pt-3 pb-3 text-base">
-                    Chemin Omar kechkar, El Madania
-                  </td>
-                  <td className="pt- pb-3 text-base flex gap-3 justify-center items-center ">
-                    <button className=" text-xs text-white bg-blue-500 p-1 rounded-md mt-2">
-                      modify
-                    </button>
-                    <button className=" mt-2 text-xs text-white bg-red-500 p-1 rounded-md">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-
-                {/* );
-                  })} */}
+                {data.length > 0 &&
+                  data.map((item) => {
+                    return (
+                      <tr
+                        key={item._id}
+                        className=""
+                      >
+                        <td className="pt-5 pb-5 text-base">{item.place_title} </td>
+                        <td className="pt-5 pb-5 text-base">{item.city}</td>
+                        <td className="pt-5 pb-5 text-base">
+                          {item.address}
+                        </td>
+                        <td className="pt-5 pb-5 text-base flex gap-3 justify-center ">
+                          <button className=" text-xs text-white bg-blue-500 p-1 rounded-md" onClick={() => {
+                            handlerUpdate(item._id);
+                          }}>
+                            modify
+                          </button>
+                          <button className=" text-xs text-white bg-red-500 p-1 rounded-md"
+                            onClick={() => {
+                              console.log(item._id);
+                              handlerDelete(item._id);
+                            }}>
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    )
+                  })}
               </tbody>
             </table>
           </div>
           <div className="w-[88%] m-auto sm:ml-0 sm:mr-0 md:w-[50%] h-10 mt-5">
             <PaginatedItems
-              currentItems={1}
-              handlePageClick={() => {}}
-              pageCount={10}
+              currentItems={page}
+              handlePageClick={(e) => { setPage(e.selected) }}
+              pageCount={Math.ceil(total / 9)}
             />
           </div>
         </div>

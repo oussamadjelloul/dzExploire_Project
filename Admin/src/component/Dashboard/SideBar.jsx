@@ -39,7 +39,7 @@ export default function SideBar({ open, setOpen }) {
         </div>
         <div className="w-full m-auto h-28 flex flex-col justify-between text-center lg:mt-5 ">
           {/* <img src={logo} alt="logo" /> */}
-          <p className=" font-logo text-blu font-bold text-3xl">Roadie</p>
+          <p className=" font-logo text-blu font-bold text-3xl">E-tourism</p>
           <Link to="/signup">
           <button className=" bg-blue bg-[#183BB7] text-white p-2 rounded-md  text-lg">
             <span className="text-2xl font-semibold">+</span> ADD New User
