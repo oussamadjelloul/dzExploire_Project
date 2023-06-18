@@ -1,6 +1,7 @@
 import React from "react";
 import SideBar from "../component/Dashboard/SideBar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 import Filter from "../assets/filter-search.png";
 import { BiSearch } from "react-icons/bi";
 // import { AiOutlineSearch } from "react-icons/ai";
@@ -22,7 +23,6 @@ export default function Home() {
   const { user } = useAuthContext();
   const [reload, setReload] = React.useState(false)
   const [search, setSearch] = React.useState("");
-
   async function Serch(value) {
     if (value !== "") {
       await axios(`${SerchePlaces} / /${value}`, {
@@ -89,8 +89,10 @@ export default function Home() {
   }, [page, reload])
 
 
-
-
+const navigate = useNavigate()
+const handlerUpdate=(id)=>{
+  navigate('/edit/card/'+id)
+}
   return (
     <div className="flex max-h-max">
       <Nav open={open} setOpen={setOpen} />
@@ -172,7 +174,7 @@ export default function Home() {
                         </td>
                         <td className="pt-5 pb-5 text-base flex gap-3 justify-center ">
                           <button className=" text-xs text-white bg-blue-500 p-1 rounded-md" onClick={() => {
-                            handlerUpdate();
+                            handlerUpdate(item._id);
                           }}>
                             modify
                           </button>

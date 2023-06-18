@@ -5,7 +5,7 @@ import { BiSearch } from "react-icons/bi";
 // import { AiOutlineSearch } from "react-icons/ai";
 import "../assets/css/Pagination.css";
 import PaginatedItems from "../component/Pagination/Pagination";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Nav from "../component/Dashboard/Nav";
 import { EventData, nbEv, DeletEvent, Serche } from "../api/api";
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -171,6 +171,11 @@ export default function Home() {
     getTotal();
   }, [page, reload])
 
+  const navigate = useNavigate()
+  const handlerUpdate=(id)=>{
+    navigate('/edit/event/'+id)
+  }
+
 
   return (
     <div className="flex max-h-max">
@@ -262,7 +267,8 @@ export default function Home() {
                         </td>
                         <td className="pt-5 pb-5 text-base flex gap-3 justify-center ">
                           <button className=" text-xs text-white bg-blue-500 p-1 rounded-md" onClick={() => {
-                            handlerUpdate();
+                            handlerUpdate(item._id);
+
                           }}>
                             modify
                           </button>

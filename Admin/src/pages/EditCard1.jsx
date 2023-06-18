@@ -148,6 +148,7 @@ useEffect(()=>{
             id:id,
             lat: lat,
             long: long
+
         };
         e.preventDefault();
        if(data.place_title==='' || data.address==='' || data.state==='' || data.category==='' || data.opening_hour==='' || data.closing_hour==='' || data.transport==='' || data.city==='' || data.theme==='' || data.description==='' )
