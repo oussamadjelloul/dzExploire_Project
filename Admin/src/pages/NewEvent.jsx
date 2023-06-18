@@ -1,16 +1,43 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {useRef, useState } from "react";
 import {toast} from 'react-toastify';
 import axios from "axios";
 import "../assets/css/EditCard.css";
 import SideBar from "../component/Dashboard/SideBar";
 import Nav from "../component/Dashboard/Nav";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const NewEvent = () => {
-  
+  const {user}=useAuthContext()
+  const [Places,setPlaces] = useState([])
+
+  useEffect(()=>{
+
+
+    fetch('http://localhost:5000/getPlaces',{
+      method : 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'accestoken': user.token
+  },
+}
+    )
+    .then(res=>{
+      return res.json()
+    })
+    .then (dat=>{
+      setPlaces(dat)
+      console.log(Places);
+    })
+    .catch(err=>{
+      toast.error(err.message)
+    })
+    
+  },[])
+
   const titleRef = useRef(null);
   const [state, setState] = useState('Alger');
-  const [relative, setRelative] = useState('Place 1 (title)');
+  const [relative, setRelative] = useState('');
   const dateTime= useRef(null);
   const descriptionRef = useRef(null);
   const [images, setImages] = useState([]);
@@ -18,37 +45,41 @@ const NewEvent = () => {
   const [imgs,setImgs]=useState([])
 
   async function handleClick(e) {
-
-      if(images !== []) {
-          const files = images;
-          const formData = Array.from({length:files.length}, () => {
-                  return new FormData();
-          });
-          for(let i=0; i<files.length; i++) {
-              formData[i].append('file', files[i]);
-              formData[i].append('upload_preset', 'ky_daoud');
-              let response
-              try {
-                  response = await axios.post(
-                      'https://api.cloudinary.com/v1_1/dwufdyiuk/image/upload',
-                      formData[i]
-                  );
-              } catch (error) {
-                  console.log(error);
-              }
-              if(response!=null) {
-                  imgs[i] = response.data.secure_url;
-              }
+    console.log(images);
+    if(images !== []) {
+      const files = images;
+      const formData = Array.from({length:files.length}, () => {
+              return new FormData();
+      });
+      for(let i=0; i<files.length; i++) {
+          formData[i].append('file', files[i]);
+          formData[i].append('upload_preset', 'ky_daoud');
+          let response
+          try {
+              response = await axios.post(
+                  'https://api.cloudinary.com/v1_1/dwufdyiuk/image/upload',
+                  formData[i]
+              );
+          } catch (error) {
+              console.log(error);
+          }
+          if(response!=null) {
+            imgs[i] = response.data.secure_url;
+            
           }
       }
+      //console.log(images);
+  }
 
       const data = {
-          place_title: titleRef.current.value,
-          state: state,
-          datetime: dateTime.current.value,
-          relative: relative,
+          event_title: titleRef.current.value,
+          status: state,
+         
+          date : dateTime.current.value.split('T')[0],
+          time:dateTime.current.value.split('T')[1],
+          places: relative,
           description: descriptionRef.current.value,
-          images: imgs
+          image: imgs[0]
       };
 
       if(data.place_title==='' || data.state==='' || data.datetime==='' || data.relative==='' || data.description==='' )
@@ -60,9 +91,27 @@ const NewEvent = () => {
         toast.error('Please upload some images');
       }
       else {
-          console.log(data);
-         
-      }
+        console.log(data);
+       fetch('http://localhost:5000/newEvent', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'accestoken': user.token
+          },
+
+          body: JSON.stringify(data),
+      })
+      .then((response)=>{
+          if(!response.ok) throw Error ('Error occure');
+          else{
+             toast.success('the event is add successfully ');
+            setImages([])
+            setImgs([])
+            }
+      })
+      .catch(err=>{toast.error(err.message)});
+      
+  }
   }
 
   return (
@@ -77,7 +126,7 @@ const NewEvent = () => {
         </div>
         <div className="contact form pt-28">
           <h2>New Event</h2>
-          <form>
+          <div>
             <span>Fields marqued * are required</span>
             <div className="formBox">
               <div className="row20">
@@ -115,8 +164,14 @@ const NewEvent = () => {
                 <div className="dropdown">
                   <span>Card relative to this events*</span>
                   <select className="select" onChange={(e)=>{setRelative(e.target.value)}}>
-                    <option className="selected">Place 1 (title)</option>
-                    <option>Place 2 (title)</option>
+                  {
+                    
+                    Places.map((elem)=>{
+                      return(<option className="" key={elem._id} value={elem._id} >{elem.place_title}</option>)
+                    })
+                  }
+
+                  
                   </select>
                 </div>
               </div>
@@ -129,49 +184,49 @@ const NewEvent = () => {
               </div>
 
               <div className="row100">
-                {/* <!-- add images --> */}
-                <span>Upload  Image * (you must upload one image) </span>
-                <div className="imgBox">
-                  <div id="addImg">
-                    <span>&#43;</span>
-                    <span>Upload New Image</span>
-                    <input
-                      type="file"
-                      id="imageInput"
-                      title=""
-                      accept="image/png, image/jpg "
-                      multiple
-                      //   onChange={(e) => {
-                      // handlerImages(e);
-                      onChange={(event) => {
-                        var imgs = [];
-                        Array.from(event.target.files).forEach((file) => {
-                          imgs.push(URL.createObjectURL(file));
-                        });
-                        setImages([...imgs, ...images]);
-                      }}
-                    />
-                  </div>
-                  {images &&
-                    images.map((e, index) => {
-                      return (
-                        <div
-                          className="relative"
-                          key={index}
-                          style={{ backgroundImage: `url(${e})` }}
-                        >
-                          <i
-                            className="fas fa-trash-alt trash-icon bg-red-600"
-                            onClick={() => {
-                              images.splice(index, 1);
-                              setImages([...images]);
-                            }}
-                          ></i>
-                        </div>
-                      );
-                    })}
+                    {/* <!-- add images --> */}
+                    <span>Upload image* </span>
+                    <div className="imgBox">
+                    <div id="addImg">
+                        <span>&#43;</span>
+                        <span>Upload New Image</span>
+                        <input
+                        type="file"
+                        id="imageInput"
+                        title=""
+                        accept="image/png, image/jpg "
+                        multiple
+                        onChange={(event) => {
+                            var imgs = [];
+                            //console.log(event.target.files)
+                            Array.from(event.target.files).forEach((file) => {
+                                imgs.push(file);
+                                //console.log(URL.createObjectURL(file));
+                            });
+                            setImages([...imgs, ...images]);
+                        }}
+                        />
+                    </div>
+                    {images &&
+                        images.map((e, index) => {
+                        return (
+                            <div
+                            className="relative"
+                            key={index}
+                            style={{backgroundImage: `url(${URL.createObjectURL(e)})`}}
+                            >
+                            <i
+                                className="fas fa-trash-alt trash-icon bg-red-600"
+                                onClick={() => {
+                                    images.splice(index, 1);
+                                    setImages([...images]);
+                                }}
+                            ></i>
+                            </div>
+                        );
+                        })}
+                    </div>
                 </div>
-              </div>
 
               <div className="next">
                 <div className="inputBox">
@@ -179,7 +234,7 @@ const NewEvent = () => {
                 </div>
               </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
