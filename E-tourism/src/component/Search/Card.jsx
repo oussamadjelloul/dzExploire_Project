@@ -32,8 +32,8 @@ export const Card = ({ handleOnSetView, detail }) => {
           <div className="p-2">
             <a href="#">
               <h5 className="mb-2 text-xl leading-7 font-medium text-[#222222]">
-                {detail.place_title.length > 25
-                  ? `${detail.place_title.slice(0, 25)}...`
+                {detail.place_title.length > 20
+                  ? `${detail.place_title.slice(0, 20)}...`
                   : detail.place_title}
               </h5>
             </a>
@@ -61,7 +61,9 @@ export const Card = ({ handleOnSetView, detail }) => {
               <div className="p-2 flex gap-1 items-center text-md">
                 <MdLocationOn />
                 <p className="text-xs leading-4 text-[#5C727D]">
-                  {detail.address}
+                  {detail.address.length > 21
+                  ? `${detail.address.slice(0, 21)}...`
+                  : detail.address}
                 </p>
               </div>
               <div className="p-2 flex gap-1 items-center">
