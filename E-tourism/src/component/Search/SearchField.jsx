@@ -16,7 +16,7 @@ export const SearchField = ({places,trigger,data,setPlaces,themes,categories}) =
   useEffect(() => {
     let result = data;
     if (adress) {
-      result = result.filter(place => place.address.startsWith(adress))
+      result = result.filter(place => place.address.toLowerCase().startsWith(adress.toLowerCase()));
       console.log(adress);
     }
     if (theme) {
