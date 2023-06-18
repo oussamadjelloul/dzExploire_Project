@@ -176,6 +176,7 @@ export default function Home() {
     navigate('/edit/event/'+id)
   }
 
+
   return (
     <div className="flex max-h-max">
       <Nav open={open} setOpen={setOpen} />
@@ -267,6 +268,7 @@ export default function Home() {
                         <td className="pt-5 pb-5 text-base flex gap-3 justify-center ">
                           <button className=" text-xs text-white bg-blue-500 p-1 rounded-md" onClick={() => {
                             handlerUpdate(item._id);
+
                           }}>
                             modify
                           </button>

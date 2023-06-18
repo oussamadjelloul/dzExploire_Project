@@ -1,6 +1,7 @@
 import React from "react";
 import SideBar from "../component/Dashboard/SideBar";
 import { Link, useNavigate } from "react-router-dom";
+
 import Filter from "../assets/filter-search.png";
 import { BiSearch } from "react-icons/bi";
 // import { AiOutlineSearch } from "react-icons/ai";
@@ -22,7 +23,6 @@ export default function Home() {
   const { user } = useAuthContext();
   const [reload, setReload] = React.useState(false)
   const [search, setSearch] = React.useState("");
-
   async function Serch(value) {
     if (value !== "") {
       await axios(`${SerchePlaces} / /${value}`, {
