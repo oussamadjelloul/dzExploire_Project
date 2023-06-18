@@ -21,7 +21,7 @@ export const DropItem = ({trigger,places,setSelected,items,title}) => {
       };
     }, [dropRef]);
     return (
-      <div className={!style?"relative flex-1":"relative flex-1 border rounded-sm border-[#eee]"} ref={dropRef}>
+      <div className={!style?"cursor-pointer relative flex-1":"cursor-pointer relative flex-1 border rounded-sm border-[#eee]"} ref={dropRef}>
         <button
           onClick={() => setDrop(!drop)}
           className="bg-white w-full px-3 py-2 rounded-sm flex justify-between items-center drop"

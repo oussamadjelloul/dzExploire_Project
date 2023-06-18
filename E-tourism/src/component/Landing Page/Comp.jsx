@@ -1,8 +1,10 @@
 import mm from '../../assets/Landing Page/cmpimg.png'
 import ll from '../../assets/Landing Page/location.png.png'
+import { Link } from "react-router-dom";
+
 const Comp = ({place}) => {
     return ( 
-        <div className='flex flex-col justify-center items-center'> 
+        <Link to={"/place/"+place._id} className='flex flex-col justify-center items-center'> 
 
                     <div className="sm:mx-5 w-fit bg-[#EDF0FD] border-2 w-[300px]  md:w-[320px] lg:w-[350px]" >
                         <div className=' relative h-fit  ' >
@@ -38,7 +40,7 @@ const Comp = ({place}) => {
                  </div> */}
 
             
-        </div>
+        </Link>
   
      );
 }
