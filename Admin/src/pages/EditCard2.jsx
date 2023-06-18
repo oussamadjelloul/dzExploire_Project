@@ -1,10 +1,14 @@
+
+    
 import "leaflet/dist/leaflet.css";
+import { useEditCardContext } from "../hooks/useEditCardContext";
 import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import { useParams } from "react-router-dom";
 import Nav from "../component/Dashboard/Nav";
 import SideBar from "../component/Dashboard/SideBar";
 const EditCard2 = () => {
+    const  {EditCard} = useEditCardContext()
     const {id} = useParams();
     const [open, setOpen] = useState(false);
     const [lat, setLat] = useState(36.737232);
@@ -61,3 +65,4 @@ const EditCard2 = () => {
 };
 
 export default EditCard2;
+

@@ -84,6 +84,7 @@ const NewCard = () => {
                 }
                 if(response!=null) {
                   imgs[i] = response.data.secure_url;
+                  
                 }
             }
             //console.log(images);
