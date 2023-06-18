@@ -6,11 +6,15 @@ import SideBar from "../component/Dashboard/SideBar";
 import { useEffect } from "react";
 import { useNewCardContext } from "../hooks/useNewCardContext";
 import { useAuthContext } from "../hooks/useAuthContext";
+import {  toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
+
 const NewCard2 = () => {
   const [open, setOpen] = useState(false);
   const [lat, setLat] = useState(36.737232);
   const [long, setLong] = useState(3.086472);
   const { NewCard } = useNewCardContext();
+  const navigate = useNavigate();
   const {user} = useAuthContext()
 
   useEffect(() => {
@@ -46,9 +50,16 @@ const NewCard2 = () => {
        body: bodyContent,
        headers: headersList
      });
-     
+     if (!response.ok) {
+      toast.error('Error')
+     } else {
      let data = await response.text();
      console.log(data);
+     if (data) {
+       toast.success('Place Added Succefully')
+       navigate('/', { replace: true });
+     }
+    }
      
   }
 
