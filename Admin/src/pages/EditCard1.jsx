@@ -22,6 +22,8 @@ const [address,setAdress]=useState('')
 const [openHour,setOpenHour]=useState('')
 const [closeHour,setCloseHour]=useState('')
 const [description,setDescription]=useState('')
+const [lat,setLat]=useState('')
+const [long,setLong]=useState('')
 
 
 useEffect(()=>{
@@ -48,6 +50,8 @@ useEffect(()=>{
       setOpenHour(dat.place.opening_hour)
       setCloseHour(dat.place.closing_hour)
       setDescription(dat.place.description)      
+      setLat(dat.place.lat)      
+      setLong(dat.place.long)      
     })
     .catch(err=>{
       toast.error(err.message)
@@ -141,6 +145,10 @@ useEffect(()=>{
             theme: theme,
             description: descriptionRef.current.value,
             images: imgs,
+            id:id,
+            lat: lat,
+            long: long
+
         };
         e.preventDefault();
        if(data.place_title==='' || data.address==='' || data.state==='' || data.category==='' || data.opening_hour==='' || data.closing_hour==='' || data.transport==='' || data.city==='' || data.theme==='' || data.description==='' )

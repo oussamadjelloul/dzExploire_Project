@@ -24,6 +24,7 @@ export default function App() {
       <Route path="/new/card/location" element={<NewCard2 />} />
       <Route path="/new/event" element={<NewEvent />} />
       <Route path="/edit/card/:id" element={<EditCard1 />} />
+
       <Route path="/edit/card/location" element={<EditCard2 />} />
       <Route path="/edit/event/:id" element={<EditEvent />} />
       <Route path="/login" element={<Login />} />
